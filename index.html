@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VACODIR CALC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Icons (Material Symbols) -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="top-app-bar">
+            <h1>VACODIR CALC</h1>
+            <button id="btn-history" class="icon-button" aria-label="Historial">
+                <span class="material-symbols-rounded">history</span>
+            </button>
+        </header>
+
+        <main id="main-content">
+            <!-- Tab Navigation -->
+            <nav class="tabs-container">
+                <button class="tab-btn active" data-tab="tab-main">
+                    <span class="material-symbols-rounded">home</span>
+                    Principal
+                </button>
+                <button class="tab-btn" data-tab="tab-client">
+                    <span class="material-symbols-rounded">person</span>
+                    Cliente
+                </button>
+                <button class="tab-btn" data-tab="tab-machines">
+                    <span class="material-symbols-rounded">print_add</span>
+                    Máquinas
+                </button>
+                <button class="tab-btn" data-tab="tab-materials">
+                    <span class="material-symbols-rounded">category</span>
+                    Mat.
+                </button>
+                <button class="tab-btn" data-tab="tab-postproc">
+                    <span class="material-symbols-rounded">brush</span>
+                    Fin.
+                </button>
+                <button class="tab-btn" data-tab="tab-costs">
+                    <span class="material-symbols-rounded">payments</span>
+                    Costos
+                </button>
+                <button class="tab-btn" data-tab="tab-data">
+                    <span class="material-symbols-rounded">database</span>
+                    Datos
+                </button>
+            </nav>
+
+            <section id="calculator-view">
+
+                <!-- Tab 1: Principal -->
+                <div id="tab-main" class="tab-content active">
+                    <div class="card">
+                        <h2>Detalles del Trabajo</h2>
+                        <div class="input-group">
+                            <label for="job-title">Título del Trabajo</label>
+                            <input type="text" id="job-title" placeholder="Ej. Impresión 3D Prototipo">
+                        </div>
+                        <div class="input-group">
+                            <label for="job-type">Tipo de Trabajo</label>
+                            <select id="job-type" class="md-select">
+                                <option value="Impresión 3D">Impresión 3D</option>
+                                <option value="Corte Láser">Corte Láser</option>
+                                <option value="CNC">CNC Router</option>
+                                <option value="Electrónica">Electrónica / Soldadura</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="job-date">Fecha</label>
+                            <input type="date" id="job-date">
+                        </div>
+                        <div class="input-group">
+                            <label for="job-status">Estado</label>
+                            <select id="job-status" class="md-select">
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="En Progreso">En Progreso</option>
+                                <option value="Terminado">Terminado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Cliente -->
+                <div id="tab-client" class="tab-content">
+                    <div class="card">
+                        <h2>Datos del Cliente</h2>
+                        <div class="input-group">
+                            <label>Buscar / Crear</label>
+                            <div class="row">
+                                <input type="text" id="client-search" placeholder="Escribe nombre..."
+                                    list="client-suggestions">
+                                <datalist id="client-suggestions"></datalist>
+                                <button id="btn-save-client" class="icon-button"
+                                    style="background:var(--md-sys-color-primary-container); color:var(--md-sys-color-on-primary-container); border-radius:4px;">
+                                    <span class="material-symbols-rounded">save</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="divider"></div>
+
+                        <!-- Extended Client Fields -->
+                        <div class="input-group">
+                            <label for="client-email">Email</label>
+                            <input type="email" id="client-email" placeholder="cliente@ejemplo.com">
+                        </div>
+
+                        <div class="row">
+                            <div class="input-group">
+                                <label for="client-phone-fixed">Teléfono Fijo</label>
+                                <input type="tel" id="client-phone-fixed" placeholder="223 123 4567">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <div
+                                style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                                <label style="margin-bottom:0;">Móviles</label>
+                                <button id="btn-add-phone" class="btn-text" style="padding:4px 8px; font-size:0.8rem;">
+                                    <span class="material-symbols-rounded" style="font-size:1rem;">add</span> Agregar
+                                </button>
+                            </div>
+                            <div id="client-phones-container" style="display:flex; flex-direction:column; gap:8px;">
+                                <div class="row mobile-row">
+                                    <input type="tel" class="client-mobile" placeholder="Móvil Principal">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="client-notes">Notas</label>
+                            <input type="text" id="client-notes" placeholder="Vehículo, Placas, etc.">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Máquinas (NEW) -->
+                <div id="tab-machines" class="tab-content">
+
+                    <!-- Global Config for Energy -->
+                    <div class="card" style="border-left: 4px solid var(--md-sys-color-secondary);">
+                        <h2>Configuración Energía</h2>
+                        <div class="input-group">
+                            <label for="kwh-price">Costo por kWh ($)</label>
+                            <input type="number" id="kwh-price" value="0" placeholder="Ej. 1.50" step="0.01">
+                            <small style="color:var(--md-sys-color-outline); margin-top:4px;">Revisa tu recibo de
+                                luz.</small>
+                        </div>
+                    </div>
+
+                    <!-- Add Machine to Job -->
+                    <div class="card">
+                        <h2>Máquinas Usadas</h2>
+                        <div id="job-machines-list"></div>
+
+                        <div class="divider"></div>
+
+                        <h3>Agregar Máquina</h3>
+                        <div class="input-group">
+                            <label>Seleccionar Máquina</label>
+                            <div class="row">
+                                <select id="machine-select" class="md-select">
+                                    <option value="">-- Elige una --</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn-text" id="btn-manage-machines">
+                            <span class="material-symbols-rounded">settings</span> Gestionar Mis Máquinas
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Materiales -->
+                <div id="tab-materials" class="tab-content">
+                    <div class="card">
+                        <h2>Materiales Consumidos</h2>
+                        <datalist id="material-suggestions"></datalist>
+                        <div id="materials-list"></div>
+                        <button class="btn-text" id="add-material">
+                            <span class="material-symbols-rounded">add</span> Agregar Material
+                        </button>
+                        <div class="divider"></div>
+                        <div class="total-row">
+                            <span>Total Materiales</span>
+                            <span id="materials-total-display">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Post-Processing -->
+                <div id="tab-postproc" class="tab-content">
+                    <div class="card">
+                        <h2>Tareas de Post-Procesado</h2>
+                        <p style="font-size:0.85rem; color:gray; margin-bottom:12px;">Selecciona tareas para agregar:
+                        </p>
+
+                        <!-- Button Grid -->
+                        <div id="pp-button-grid" class="pp-grid">
+                            <!-- Buttons injected by JS -->
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <h3>Tareas Agregadas</h3>
+                        <div id="postproc-list">
+                            <!-- Active tasks go here -->
+                        </div>
+
+                        <div class="total-row">
+                            <span>Total Post-Proceso</span>
+                            <span id="postproc-total-display">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 5: Costos y Acciones -->
+                <div id="tab-costs" class="tab-content">
+                    <div class="card">
+                        <h2>Resumen Económico</h2>
+
+                        <div class="input-group">
+                            <label for="overhead-percent">Margen de Ganancia (%)</label>
+                            <input type="range" id="overhead-percent" min="0" max="100" value="20">
+                            <div class="range-value"><span id="overhead-display">20</span>%</div>
+                        </div>
+
+                        <!-- Added Labor Inputs -->
+                        <div class="divider"></div>
+                        <h3>Mano de Obra</h3>
+                        <div class="row">
+                            <div class="input-group">
+                                <label for="labor-hours">Horas Totales</label>
+                                <input type="number" id="labor-hours" placeholder="0" step="0.5">
+                            </div>
+                            <div class="input-group">
+                                <label for="labor-rate">Precio / Hora ($)</label>
+                                <input type="number" id="labor-rate" placeholder="0">
+                            </div>
+                        </div>
+                        <div class="total-row">
+                            <span>Total Mano de Obra</span>
+                            <span id="labor-total-display">$0.00</span>
+                        </div>
+                        <div class="divider"></div>
+
+                        <div class="total-section">
+                            <div class="total-row">
+                                <span>Máquinas / Energía</span>
+                                <span id="summary-machines">$0.00</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Materiales</span>
+                                <span id="summary-materials">$0.00</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Mano de Obra</span>
+                                <span id="summary-labor">$0.00</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Post-Proceso</span>
+                                <span id="summary-postproc">$0.00</span>
+                            </div>
+                            <div class="total-row subtotal">
+                                <span>Costo Real</span>
+                                <span id="subtotal-display">$0.00</span>
+                            </div>
+                            <div class="total-row main-total">
+                                <span>Precio Venta</span>
+                                <span id="total-display">$0.00</span>
+                            </div>
+                        </div>
+
+                        <div class="action-grid">
+                            <button id="btn-whatsapp" class="btn-action whatsapp">
+                                <span class="material-symbols-rounded">share</span> WhatsApp
+                            </button>
+                            <button id="btn-print" class="btn-action print">
+                                <span class="material-symbols-rounded">print</span> PDF
+                            </button>
+                            <button id="btn-save" class="btn-filled full-width">
+                                <span class="material-symbols-rounded">save</span> Guardar
+                            </button>
+                            <button id="btn-new" class="btn-outlined full-width">
+                                Nuevo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Data Management -->
+                <div id="tab-data" class="tab-content">
+                    <div style="margin-bottom:16px;">
+                        <p style="font-size:0.9rem; color:gray;">Edita directamente el JSON o descarga/carga copias de
+                            seguridad.</p>
+                    </div>
+
+                    <!-- Template for Data Card logic injected via JS or repeated manually -->
+                    <!-- Clients -->
+                    <div class="card">
+                        <h3>Clientes</h3>
+                        <textarea id="json-clients" class="code-editor" rows="6"
+                            style="resize:none; width:100%;"></textarea>
+                        <div class="data-actions-row">
+                            <button class="btn-filled btn-sm btn-json-update" data-type="clients">
+                                <span class="material-symbols-rounded">save</span> Grabar
+                            </button>
+                            <label class="btn-outlined btn-sm" style="cursor:pointer">
+                                <span class="material-symbols-rounded">upload</span> Cargar
+                                <input type="file" class="json-upload" data-type="clients" style="display:none"
+                                    accept=".json">
+                            </label>
+                            <button class="icon-button btn-json-dl" data-type="clients" title="Descargar Backup">
+                                <span class="material-symbols-rounded">download</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Materials -->
+                    <div class="card">
+                        <h3>Materiales</h3>
+                        <textarea id="json-materials" class="code-editor" rows="6"
+                            style="resize:none; width:100%;"></textarea>
+                        <div class="data-actions-row">
+                            <button class="btn-filled btn-sm btn-json-update" data-type="materials">
+                                <span class="material-symbols-rounded">save</span> Grabar
+                            </button>
+                            <label class="btn-outlined btn-sm" style="cursor:pointer">
+                                <span class="material-symbols-rounded">upload</span> Cargar
+                                <input type="file" class="json-upload" data-type="materials" style="display:none"
+                                    accept=".json">
+                            </label>
+                            <button class="icon-button btn-json-dl" data-type="materials" title="Descargar Backup">
+                                <span class="material-symbols-rounded">download</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Machines -->
+                    <div class="card">
+                        <h3>Máquinas</h3>
+                        <textarea id="json-machines" class="code-editor" rows="6"
+                            style="resize:none; width:100%;"></textarea>
+                        <div class="data-actions-row">
+                            <button class="btn-filled btn-sm btn-json-update" data-type="machines">
+                                <span class="material-symbols-rounded">save</span> Grabar
+                            </button>
+                            <label class="btn-outlined btn-sm" style="cursor:pointer">
+                                <span class="material-symbols-rounded">upload</span> Cargar
+                                <input type="file" class="json-upload" data-type="machines" style="display:none"
+                                    accept=".json">
+                            </label>
+                            <button class="icon-button btn-json-dl" data-type="machines" title="Descargar Backup">
+                                <span class="material-symbols-rounded">download</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PostProc -->
+                    <div class="card">
+                        <h3>Post-Proceso</h3>
+                        <textarea id="json-postproc" class="code-editor" rows="6"
+                            style="resize:none; width:100%;"></textarea>
+                        <div class="data-actions-row">
+                            <button class="btn-filled btn-sm btn-json-update" data-type="postproc">
+                                <span class="material-symbols-rounded">save</span> Grabar
+                            </button>
+                            <label class="btn-outlined btn-sm" style="cursor:pointer">
+                                <span class="material-symbols-rounded">upload</span> Cargar
+                                <input type="file" class="json-upload" data-type="postproc" style="display:none"
+                                    accept=".json">
+                            </label>
+                            <button class="icon-button btn-json-dl" data-type="postproc" title="Descargar Backup">
+                                <span class="material-symbols-rounded">download</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <!-- Manage Machines Dialog -->
+        <dialog id="machines-modal" class="full-screen-dialog">
+            <header class="top-app-bar"
+                style="background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface);">
+                <button id="btn-close-machines" class="icon-button">
+                    <span class="material-symbols-rounded">arrow_back</span>
+                </button>
+                <h1 style="font-size: 1.2rem;">Inventario de Máquinas</h1>
+            </header>
+            <div class="dialog-content">
+                <div class="card">
+                    <h3>Nueva Máquina</h3>
+                    <div class="row">
+                        <div class="input-group" style="flex:1">
+                            <label>Categoría</label>
+                            <select id="new-machine-cat" class="md-select">
+                                <option value="FDM">Impresión 3D (FDM)</option>
+                                <option value="SLA">Impresión Resina (SLA)</option>
+                                <option value="LASER">Corte Láser / Grabado</option>
+                                <option value="CNC">CNC Router</option>
+                                <option value="OTRO">Otro</option>
+                            </select>
+                        </div>
+                        <div class="input-group" style="flex:2">
+                            <label>Nombre (Ej. Ender 3)</label>
+                            <input type="text" id="new-machine-name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label>Consumo (Watts)</label>
+                            <input type="number" id="new-machine-watts" placeholder="350">
+                        </div>
+                        <div class="input-group">
+                            <label>Desgaste/Hora ($)</label>
+                            <input type="number" id="new-machine-wear" placeholder="10">
+                        </div>
+                    </div>
+                    <button id="btn-add-machine-db" class="btn-filled full-width">Guardar Máquina</button>
+                </div>
+
+                <h3>Mis Máquinas</h3>
+                <div id="machines-db-list"></div>
+            </div>
+        </dialog>
+
+        <!-- History Modal -->
+        <dialog id="history-modal" class="full-screen-dialog">
+            <header class="top-app-bar">
+                <button id="btn-close-history" class="icon-button">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+                <h1>Historial</h1>
+            </header>
+            <div class="dialog-content" id="history-list">
+                <!-- History items -->
+            </div>
+        </dialog>
+    </div>
+
+    <script src="app.js"></script>
+    <div id="debug-console"
+        style="position:fixed; bottom:0; left:0; right:0; background:rgba(0,0,0,0.8); color:red; font-size:12px; padding:10px; z-index:9999; display:none;">
+    </div>
+    <script>
+        // DEBUGGER
+        window.onerror = function (msg, url, line) {
+            const d = document.getElementById('debug-console');
+            d.style.display = 'block';
+            d.innerHTML += `<div>Error: ${msg} at line ${line}</div>`;
+            return false;
+        };
+
+        // Service Worker DISABLED for debugging
+        /*
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(() => console.log('SW registered'))
+                .catch(() => console.log('SW failed'));
+        }
+        */
+
+        // Force unregister to clear cache
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                for (let registration of registrations) {
+                    registration.unregister();
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
