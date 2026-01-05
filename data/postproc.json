@@ -1,0 +1,14 @@
+[
+  {
+    "desc": "Lijado Básico",
+    "cost": 50
+  },
+  {
+    "desc": "Pintura Primer",
+    "cost": 100
+  },
+  {
+    "desc": "Barnizado",
+    "cost": 80
+  }
+]

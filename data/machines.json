@@ -1,0 +1,23 @@
+[
+  {
+    "id": 101,
+    "name": "Neptune 4 PRO",
+    "watts": 350,
+    "wear": 15,
+    "price": 500
+  },
+  {
+    "id": 102,
+    "name": "Phecda",
+    "watts": 1200,
+    "wear": 150,
+    "price": 900
+  },
+  {
+    "id": 103,
+    "name": "Centauri Carbon",
+    "watts": 500,
+    "wear": 40,
+    "price": 700
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Cliente Ejemplo",
+    "phone": "55 1234 5678",
+    "notes": "Cliente frecuente. Paga en efectivo."
+  },
+  {
+    "name": "Juan Pérez",
+    "phone": "55 8765 4321",
+    "notes": "Requiere factura."
+  }
+]

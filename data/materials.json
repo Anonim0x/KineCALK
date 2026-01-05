@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Filamento PLA Negro",
+    "price": 450,
+    "unit": "kg"
+  },
+  {
+    "name": "MDF 3mm (Hoja)",
+    "price": 120,
+    "unit": "unidad"
+  },
+  {
+    "name": "Resina UV 500ml",
+    "price": 600,
+    "unit": "unidad"
+  }
+]
