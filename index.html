@@ -204,6 +204,24 @@
 
                 <!-- Tab: Post-Processing -->
                 <div id="tab-postproc" class="tab-content">
+                     <!-- Added Labor Inputs -->
+                        <div class="divider"></div>
+                        <h3>Mano de Obra</h3>
+                        <div class="row">
+                            <div class="input-group">
+                                <label for="labor-hours">Horas Totales</label>
+                                <input type="number" id="labor-hours" placeholder="0" step="0.5">
+                            </div>
+                            <div class="input-group">
+                                <label for="labor-rate">Precio / Hora ($)</label>
+                                <input type="number" id="labor-rate" placeholder="0">
+                            </div>
+                        </div>
+                        <div class="total-row">
+                            <span>Total Mano de Obra</span>
+                            <span id="labor-total-display">$0.00</span>
+                        </div>
+                        <div class="divider"></div>
                     <div class="card">
                         <h2>Tareas de Post-Procesado</h2>
                         <p style="font-size:0.85rem; color:gray; margin-bottom:12px;">Selecciona tareas para agregar:
@@ -239,26 +257,7 @@
                             <div class="range-value"><span id="overhead-display">20</span>%</div>
                         </div>
 
-                        <!-- Added Labor Inputs -->
-                        <div class="divider"></div>
-                        <h3>Mano de Obra</h3>
-                        <div class="row">
-                            <div class="input-group">
-                                <label for="labor-hours">Horas Totales</label>
-                                <input type="number" id="labor-hours" placeholder="0" step="0.5">
-                            </div>
-                            <div class="input-group">
-                                <label for="labor-rate">Precio / Hora ($)</label>
-                                <input type="number" id="labor-rate" placeholder="0">
-                            </div>
-                        </div>
-                        <div class="total-row">
-                            <span>Total Mano de Obra</span>
-                            <span id="labor-total-display">$0.00</span>
-                        </div>
-                        <div class="divider"></div>
-
-                        <div class="total-section">
+                       <div class="total-section">
                             <div class="total-row">
                                 <span>Máquinas / Energía</span>
                                 <span id="summary-machines">$0.00</span>
@@ -489,4 +488,5 @@
 
 
 </html>
+
 
