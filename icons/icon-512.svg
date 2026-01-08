@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <rect width="100%" height="100%" fill="#000" />
-  <circle cx="256" cy="170" r="96" fill="#fff" />
-  <text x="256" y="330" font-family="Arial, Helvetica, sans-serif" font-size="220" fill="#fff" text-anchor="middle">V</text>
+  <circle cx="256" cy="110" r="75" fill="#fff" />
+  <circle cx="170" cy="250" r="75" fill="#00bbff" />
+  <circle cx="340" cy="250" r="75" fill="#ff00ff" />
+  <circle cx="86" cy="400" r="75" fill="#fff" />
+  <circle cx="256" cy="400" r="75" fill="#ffff00" />
+  <circle cx="426" cy="400" r="75" fill="#fff" />
 </svg>
