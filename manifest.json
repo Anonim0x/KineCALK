@@ -1,15 +1,29 @@
 {
   "name": "VACODIR CALC",
   "short_name": "VACODIR",
-  "start_url": "./index.html",
+  "description": "Calculadora de costos para emprendedores makers",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#000000",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/265/265682.png",
+      "src": "icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icons/icon-512.svg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icons/maskable-icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
     }
   ]
 }

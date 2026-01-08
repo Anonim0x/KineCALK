@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VACODIR CALC</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#000000">
 
     <!-- Google Fonts -->
@@ -17,6 +17,7 @@
     <!-- Icons (Material Symbols) -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 </head>
 
 <body>
@@ -456,11 +457,7 @@
         </dialog>
     </div>
 
-    <script src="app.js"></script>
-    <div id="debug-console"
-        style="position:fixed; bottom:0; left:0; right:0; background:rgba(0,0,0,0.8); color:red; font-size:12px; padding:10px; z-index:9999; display:none;">
-    </div>
-    <script>
+    <script id="debug-console-script">
         // DEBUGGER
         window.onerror = function (msg, url, line) {
             const d = document.getElementById('debug-console');
@@ -469,31 +466,14 @@
             return false;
         };
 
-        // Service Worker DISABLED for debugging
-        /*
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then(() => console.log('SW registered'))
-                .catch(() => console.log('SW failed'));
-        }
-        */
-
-        // Force unregister to clear cache
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function (registrations) {
-                for (let registration of registrations) {
-                    registration.unregister();
-                }
-            });
-        }
     </script>
+    <div id="debug-console"
+        style="position:fixed; bottom:0; left:0; right:0; background:rgba(0,0,0,0.8); color:red; font-size:12px; padding:10px; z-index:9999; display:none;">
+    </div>
+
+    <!-- Service worker registration -->
+    <script src="/sw-register.js" defer></script>
+    <script src="/app.js" defer></script>
 </body>
 
-
 </html>
-
-
-
-
-
-
